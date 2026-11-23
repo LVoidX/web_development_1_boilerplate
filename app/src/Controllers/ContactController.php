@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Controllers;
+
+class ContactController
+{
+    public function showForm($vars = [])
+    {
+        echo '<!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Contact Us</title>
+            </head>
+            <body>
+                <h1>Contact Us</h1>
+                <form action="/contact" method="POST">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <br>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                    <br>
+                    <button type="submit">Send Message</button>
+                </form>
+            </body>
+        </html>';
+    }
+
+    public function handleForm($vars = [])
+    {
+        $name = $_POST['name'];
+
+        echo'<!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Contact Form Submission</title>
+            </head>
+            <body>
+                <h1>Thank You ' . htmlspecialchars($name) . '!</h1>
+                <p>Your message has been received.</p>
+            </body>
+        </html>';
+    }
+}
